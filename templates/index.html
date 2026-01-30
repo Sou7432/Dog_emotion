@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dog Attack Prediction</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #0f172a;
+        color: white;
+        text-align: center;
+      }
+      .card {
+        background: #1e293b;
+        width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 12px;
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px;
+      }
+      button {
+        background: #38bdf8;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      img {
+        width: 100%;
+        margin-top: 15px;
+        border-radius: 10px;
+      }
+      .result {
+        margin-top: 15px;
+        background: #020617;
+        padding: 10px;
+        border-radius: 10px;
+      }
+    </style>
+
+    <script>
+      function validate() {
+        const file = document.getElementById("img").value;
+        if (!file) {
+          alert("Please upload an image");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>🐕 Dog Attack Risk Prediction</h2>
+
+      <form
+        method="POST"
+        enctype="multipart/form-data"
+        onsubmit="return validate();"
+      >
+        <input type="file" name="image" id="img" />
+        <br />
+        <button type="submit">Analyze Image</button>
+      </form>
+
+      {% if image %}
+      <img src="{{ image }}" />
+      {% endif %} {% if result %}
+      <div class="result">
+        <p><b>Emotion:</b> {{ result.emotion }}</p>
+        <p><b>Risk Level:</b> {{ result.risk }}</p>
+        <p><b>Attack Probability:</b> {{ result.attack }}%</p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
