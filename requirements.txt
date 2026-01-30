@@ -1,0 +1,15 @@
+flask
+ultralytics
+opencv-python-headless
+numpy
+pillow
+matplotlib
+torch
+torchvision
+flask
+ultralytics
+opencv-python-headless
+numpy
+pillow
+torch
+torchvision
